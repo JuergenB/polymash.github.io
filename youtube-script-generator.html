@@ -110,6 +110,12 @@
             transform: translateY(0);
         }
         
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .loading {
             display: none;
             text-align: center;
@@ -179,7 +185,7 @@
                     <div class="help-text">Provide context about the exhibition, show, or theme that this artist's work relates to</div>
                 </div>
                 
-                <button type="submit" class="submit-btn">
+                <button type="submit" class="submit-btn" id="submitBtn">
                     🚀 Generate YouTube Script & Audio
                 </button>
             </form>
@@ -206,11 +212,20 @@
             e.preventDefault();
             
             const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
+            
+            // Convert FormData to regular object
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            console.log('Submitting data:', data); // Debug log
             
             // Show loading state
             form.style.display = 'none';
+            submitBtn.disabled = true;
             document.getElementById('loading').style.display = 'block';
             document.getElementById('success').style.display = 'none';
             document.getElementById('error').style.display = 'none';
@@ -220,21 +235,35 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(data)
                 });
                 
-                if (response.ok) {
+                console.log('Response status:', response.status); // Debug log
+                console.log('Response headers:', response.headers); // Debug log
+                
+                if (response.ok || response.status === 200) {
                     document.getElementById('loading').style.display = 'none';
                     document.getElementById('success').style.display = 'block';
+                    
+                    // Reset form for next submission
+                    setTimeout(() => {
+                        form.reset();
+                        form.style.display = 'block';
+                        submitBtn.disabled = false;
+                        document.getElementById('success').style.display = 'none';
+                    }, 5000);
                 } else {
-                    throw new Error('Server responded with an error');
+                    throw new Error(`Server responded with status ${response.status}`);
                 }
             } catch (error) {
+                console.error('Submission error:', error); // Debug log
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
-                document.getElementById('errorMessage').textContent = 'Failed to submit request. Please check your internet connection and try again.';
+                document.getElementById('errorMessage').textContent = `Failed to submit request: ${error.message}. Please check your internet connection and try again.`;
                 form.style.display = 'block';
+                submitBtn.disabled = false;
             }
         });
     </script>
