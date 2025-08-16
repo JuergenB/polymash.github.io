@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Script Generator - Artist Profile Submission</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        input[type="text"], input[type="url"], textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        input[type="text"]:focus, input[type="url"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .help-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+        
+        .success {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .error {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header, .form-container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 YouTube Script Generator</h1>
+            <p>Create professional artist profile videos with AI-generated scripts and audio</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="artistForm">
+                <div class="form-group">
+                    <label for="artistName">Artist Name *</label>
+                    <input type="text" id="artistName" name="artistName" required>
+                    <div class="help-text">Enter the full name of the artist you want to feature</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="artistProfileUrl">Artist Profile URL *</label>
+                    <input type="url" id="artistProfileUrl" name="artistProfileUrl" required>
+                    <div class="help-text">Provide the complete URL to the artist's profile page or portfolio website</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exhibitionTheme">Exhibition Theme Description *</label>
+                    <textarea id="exhibitionTheme" name="exhibitionTheme" required placeholder="Describe the exhibition theme, curatorial statement, or context for featuring this artist..."></textarea>
+                    <div class="help-text">Provide context about the exhibition, show, or theme that this artist's work relates to</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    🚀 Generate YouTube Script & Audio
+                </button>
+            </form>
+            
+            <div class="loading" id="loading">
+                <h3>🎨 Processing your request...</h3>
+                <p>We're analyzing the artist's work, creating a profile, generating a script, and producing audio. This may take a few minutes.</p>
+            </div>
+            
+            <div class="success" id="success">
+                <h3>✅ Success!</h3>
+                <p>Your YouTube script and audio have been generated successfully! You'll receive an email with the complete artist profile, script, and Google Drive link to the audio file.</p>
+            </div>
+            
+            <div class="error" id="error">
+                <h3>❌ Error</h3>
+                <p id="errorMessage">Something went wrong. Please try again or contact support.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('artistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading state
+            form.style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('success').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            
+            try {
+                const response = await fetch('https://eordam80bxxgthh.m.pipedream.net', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                } else {
+                    throw new Error('Server responded with an error');
+                }
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('errorMessage').textContent = 'Failed to submit request. Please check your internet connection and try again.';
+                form.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
