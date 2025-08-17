@@ -1,127 +1,171 @@
-# YouTube Script Agent for Artist Profiles
+# Not Real Art YouTube Content Generator
 
-An automated AI-powered workflow that transforms artist profile information into professional YouTube content, complete with scripts and audio generation.
+**Internal Content Creation Tool for Not Real Art's First Friday Exhibition Series**
 
-## 🎯 What It Does
+![Not Real Art](images/NRA-Master-Logo-Repro-400px.png)
 
-This intelligent agent automatically:
+> ⚠️ **INTERNAL USE ONLY** - This tool is exclusively for the Not Real Art content team and requires Artwork Archive URLs from our curated artist database.
 
-1. **Scrapes Artist Data** - Extracts comprehensive information from artist profile pages, including biography, artist statements, and artwork details
-2. **Enhances with Website Content** - Visits artist websites and social media to gather additional biographical information from dedicated about pages
-3. **Generates AI-Powered Content** - Creates professional artist profiles and 3-minute YouTube scripts using advanced AI
-4. **Produces Audio Content** - Converts scripts to professional voiceover audio using Wondercraft.ai
-5. **Delivers Complete Package** - Emails all content and saves audio files to Google Drive with permanent links
+## 🎯 About Not Real Art
 
-## 🚀 Features
+**Not Real Art** is a Los Angeles-based website, magazine, and podcast that celebrates overlooked and under-represented artists across the USA. Founded by Scott Power and driven by Crewest Studios, with support from the nonprofit Arterial.org, we maintain a comprehensive database of nearly **5,000 artists** and **20,000+ artworks**.
 
-### Intelligent Web Scraping
-- **Multi-source data collection** from artist profiles, personal websites, and social media
-- **Smart about page detection** - Automatically finds and scrapes `/about`, `/bio`, and `/story` pages
-- **Artwork analysis** - Processes 1-3 key artworks with detailed descriptions
-- **Social media integration** - Extracts Instagram and website links with formatted CTAs
+### Our Mission
+Amplify marginalized voices in contemporary art through professional content creation, meaningful financial support via our **$2,000 artist grant program**, and monthly **First Friday exhibitions**.
 
-### AI-Powered Content Generation
-- **Comprehensive artist profiles** combining all scraped data
-- **Professional YouTube scripts** optimized for 3-minute videos
-- **Exhibition context integration** - Connects artist work to curatorial themes
-- **Spoken-friendly formatting** - URLs formatted for natural speech (e.g., "example dot com")
+## 🎨 First Friday Exhibition Series
 
-### Professional Audio Production
-- **Wondercraft.ai integration** for high-quality text-to-speech
-- **Job monitoring** with automatic completion detection
-- **Google Drive storage** with permanent download links
-- **Email delivery** of complete content packages
+Every first Friday of the month, Not Real Art features curated artists from our Artwork Archive database. This content generator was specifically built to create professional YouTube videos and shorts for these exhibitions, extending the reach and impact of each featured artist.
+
+## 🚀 What This Tool Creates
+
+### Dual-Format Content Generation
+- **Full YouTube Videos (3-minute)** - Comprehensive artist features with educational depth
+- **YouTube Shorts (1-minute)** - Viral-optimized content with hooks and pattern interrupts
+
+### Complete Content Packages Include:
+- **Enhanced Artist Profiles** - Combining Artwork Archive data with comprehensive website research
+- **Professional Scripts** - Optimized for Not Real Art's brand voice and viral potential  
+- **High-Quality Audio** - Wondercraft.ai voiceover generation for both formats
+- **Cloud Storage** - Permanent Google Drive links for all content
+- **Email Delivery** - Complete packages delivered to the content team
+
+## 🎯 Brand Voice Integration
+
+### Cultural Bridge-Builder Approach
+Making high art accessible while maintaining artistic integrity, supporting the $2 trillion creative economy and amplifying voices often overlooked in mainstream art spaces.
+
+### Three-Pillar Content Strategy
+- **Educational Content (40%)** - Knowledgeable but approachable professor tone
+- **Entertainment Content (35%)** - Enthusiastic friend sharing cool discoveries  
+- **Inspirational Content (25%)** - Supportive mentor celebrating creative courage
+
+### Viral Optimization Features
+- **Hook formulas** - "Here's an artist you need to know about..."
+- **Pattern interrupts** - Unexpected content and behind-the-scenes access
+- **Emotional transformation** - Connecting art to universal human experiences
+- **Artist-first approach** - Prioritizing creator benefit over views
+
+## 📋 Usage Requirements (Artwork Archive Specific)
+
+### Required Input Format
+- **Artist Name** - Featured artist from First Friday exhibition
+- **Artwork Archive URL** - Direct link to artist's exhibition profile widget from our database
+- **Exhibition Theme** - Curatorial context for the specific First Friday show
+
+### Artwork Archive URL Format:
+https://www.artworkarchive.com/profile/crewest-studio/embed/exhibition/[exhibition-name]/pieces?artist=[artist-name]
+
+
+**Example:**
+https://www.artworkarchive.com/profile/crewest-studio/embed/exhibition/first-friday-january/pieces?artist=clarisse-abelarde
+
+
+## 🛠 Technical Architecture
+
+### 14-Step Automated Workflow
+1. **HTTP Webhook Trigger** - Receives Artwork Archive URLs from content team
+2. **Extract Exhibition Data** - Process artist name, profile URL, and exhibition theme
+3. **Scrape Artist Profile** - Extract biography, statements, and artwork links
+4. **Enhanced Website Research** - Target `/about` pages for comprehensive bios
+5. **Scrape Artwork Details** - Detailed analysis of individual pieces
+6. **Create Artist Profile** - AI-generated with Not Real Art mission context
+7. **Generate YouTube Script** - 3-minute format with Not Real Art brand voice
+8. **Generate YouTube Shorts Script** - 1-minute viral-optimized format
+9. **Create Shorts Audio** - Wondercraft.ai voiceover for Shorts script
+10. **Monitor Shorts Completion** - Automated job status checking
+11. **Save Shorts to Google Drive** - Permanent cloud storage
+12. **Create Full Audio** - Wondercraft.ai voiceover for full script
+13. **Monitor Full Completion** - Automated job status checking
+14. **Save Full Audio to Google Drive** - Permanent cloud storage
+15. **Deliver Content Package** - Email with all scripts and audio files
 
 ### Memory-Optimized Performance
 - **Cost-effective operation** without requiring increased memory limits
 - **Efficient data processing** with smart cleanup and optimization
 - **Reliable execution** designed for consistent performance
 
-## 🌐 Public Access
-
-**Live Form:** [https://juergenb.github.io/polymash.github.io/youtube-script-generator.html](https://juergenb.github.io/polymash.github.io/youtube-script-generator.html)
-
-Anyone can submit artist information through the public form to generate YouTube content automatically.
-
-## 🛠 Technical Architecture
-
-### Built on Pipedream Platform
-- **HTTP Webhook Trigger** - Accepts form submissions from public website
-- **10-Step Automated Workflow** - Fully orchestrated content generation pipeline
-- **Multiple API Integrations** - OpenAI, Wondercraft.ai, Google Drive, Gmail
-- **Browser Automation** - Puppeteer-powered web scraping
-
-### Workflow Steps
-1. **Extract User Inputs** - Process form data (artist name, profile URL, exhibition theme)
-2. **Scrape Artist Profile** - Extract biography, statement, and artwork links
-3. **Extract Website & Social Links** - Find and scrape artist websites and social media
-4. **Scrape Artwork Details** - Gather detailed information about individual artworks
-5. **Create Artist Profile** - AI-generated comprehensive artist analysis
-6. **Generate YouTube Script** - Professional 3-minute video script with CTAs
-7. **Create Wondercraft Audio** - Upload script for professional voiceover generation
-8. **Monitor Job Completion** - Poll until audio generation is complete
-9. **Save to Google Drive** - Store MP3 file with permanent access
-10. **Send Final Email** - Deliver complete content package
-
-## 📋 Input Requirements
-
-- **Artist Name** - Full name of the featured artist
-- **Artist Profile URL** - Link to artist's profile page or portfolio
-- **Exhibition Theme** - Curatorial context or exhibition description
-
-## 📦 Output Delivered
+## 📦 Content Deliverables
 
 ### Email Package Contains:
-- **Comprehensive Artist Profile** - Biography, statement, and artwork analysis
-- **Professional YouTube Script** - 3-minute voiceover-ready content
-- **Artist Website & Social Media Info** - Links and additional biographical content
-- **Google Drive Audio File** - Professional MP3 with permanent download link
-- **Exhibition Context** - How the artist's work relates to the theme
+- **Comprehensive Artist Profile** - Enhanced with website research and Not Real Art context
+- **Full YouTube Script (3-minute)** - Educational and entertaining artist feature
+- **YouTube Shorts Script (1-minute)** - Viral-optimized with hooks and CTAs
+- **Professional Audio Files** - Both scripts converted to high-quality MP3s
+- **Google Drive Links** - Permanent access to all audio content
+- **Social Media Information** - Artist website and Instagram with formatted CTAs
 
-### File Storage:
-- **Google Drive Integration** - Permanent cloud storage
-- **Organized File Naming** - "Artist Name - YouTube Script Audio.mp3"
-- **Shareable Links** - Direct access for content creators
+### File Organization:
+- **Naming Convention:** `[Artist Name] - YouTube Script Audio.mp3` / `[Artist Name] - YouTube Shorts Audio.mp3`
+- **Storage Location:** Organized Google Drive folders for easy content management
+- **Permanent Links:** Direct access for immediate use in video production
 
-## 🎨 Perfect for Art Organizations
+## 🎬 Content Team Usage
 
-This tool is ideal for:
-- **Art Nonprofits** creating educational content about emerging artists
-- **Galleries** producing promotional videos for exhibitions
-- **Curators** developing artist spotlights and features
-- **Art Educators** creating instructional content about contemporary artists
-- **Content Creators** in the art space needing professional scripts and audio
+### Access
+**Internal Form:** [Content Generation Tool](youtube-script-generator.html)
 
-## 🔧 Setup & Configuration
+### Workflow for Not Real Art Team
+1. **Access First Friday Exhibition** - Navigate to the featured artist in Artwork Archive
+2. **Copy Exhibition Widget URL** - Use the specific exhibition URL format
+3. **Submit to Content Generator** - Include artist name and exhibition theme
+4. **Automated Processing** - Tool handles research, generation, and audio creation
+5. **Receive Content Package** - Complete email with scripts and audio files
+6. **Publish Content** - Use generated materials for YouTube videos and shorts
 
-### Required Integrations:
-- **OpenAI Account** - For AI content generation
-- **Wondercraft.ai Account** - For professional audio generation
-- **Google Drive** - For file storage
-- **Gmail** - For content delivery
+### Processing Time
+- **Typical completion:** 3-5 minutes
+- **Includes:** Artwork Archive scraping, website research, AI generation, audio creation
+- **Optimized for:** Not Real Art's brand voice and First Friday exhibition context
 
-### Environment Variables:
-- Wondercraft API Key
-- Voice ID for audio generation
-- Google Drive folder configuration
-- Email delivery settings
+## 🤝 Development Partnership
 
-## 🚀 Getting Started
+### Built by Polymash
+**Digital Strategy Partner since 2018**
+- Not Real Art website development and maintenance
+- Arterial.org platform creation and management
+- Crewest Studios digital presence and tools
+- Custom utilities for artist promotion and content creation
+- Artwork Archive integration and optimization
 
-1. **Access the Public Form** - Visit the live form URL
-2. **Submit Artist Information** - Provide artist name, profile URL, and exhibition theme
-3. **Wait for Processing** - Workflow typically completes in 3-5 minutes
-4. **Receive Email** - Complete content package delivered automatically
-5. **Access Audio File** - Download MP3 from Google Drive link
+### Specialized for Not Real Art's Needs
+- **Artwork Archive integration** for seamless database access
+- **First Friday exhibition context** for monthly content creation
+- **Brand voice optimization** for consistent messaging across all platforms
+- **Under-represented artist focus** aligned with organizational mission
+- **Grant program integration** supporting $2,000 award recipients
 
-## 🤝 Contributing
+## 🔮 Future Enhancements
 
-This project was built to support art nonprofits and organizations working with emerging artists. Contributions and improvements are welcome!
+### Planned Expansions
+- **Podcast Integration** - Wondercraft conversation mode for dual-host episodes
+- **Complete Social Media Packages** - Instagram, Twitter, and platform-specific content
+- **Blog Content Generation** - Automated articles for the Not Real Art website
+- **Video Production Integration** - Complete YouTube video creation beyond audio
 
-## 📄 License
+### Content Strategy Evolution
+- **Multi-platform optimization** for various social media channels
+- **Analytics integration** for content performance tracking
+- **Artist feedback loops** for continuous improvement
+- **Exhibition series expansion** beyond First Friday
 
-Built for educational and nonprofit use in supporting emerging artists and art organizations.
+## 📞 Support & Access
+
+### For Not Real Art Team Members:
+- **Access:** Use the internal content generation form
+- **Support:** Contact Polymash for technical issues or feature requests
+- **Strategy:** Reach out to Scott Power for content direction and exhibition planning
+
+### Technical Requirements:
+- **Artwork Archive access** - Must use exhibition widget URLs from our database
+- **Content team permissions** - Internal use only for authorized team members
+- **Exhibition context** - Requires First Friday exhibition themes and curatorial statements
 
 ---
 
-**Powered by Pipedream • OpenAI • Wondercraft.ai • Google Drive**
+**Built with ❤️ for emerging artists**  
+*Supporting Not Real Art's mission to celebrate overlooked and under-represented artists across the USA*
+
+**Organizations:** Not Real Art • Crewest Studios • Arterial.org  
+**Technology:** Pipedream • OpenAI • Wondercraft.ai • Google Drive • Artwork Archive  
+**Development:** Polymash Digital Strategy Services
