@@ -101,7 +101,7 @@ https://www.artworkarchive.com/profile/crewest-studio/embed/exhibition/first-fri
 ## 🎬 Content Team Usage
 
 ### Access
-**Internal Form:** [Content Generation Tool](youtube-script-generator.html)
+**Internal Form:** [Content Generation Tool](https://juergenb.github.io/polymash.github.io/youtube-script-generator.html)
 
 ### Workflow for Not Real Art Team
 1. **Access First Friday Exhibition** - Navigate to the featured artist in Artwork Archive
