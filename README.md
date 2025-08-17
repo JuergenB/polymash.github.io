@@ -2,8 +2,6 @@
 
 **Internal Content Creation Tool for Not Real Art's First Friday Exhibition Series**
 
-![Not Real Art](images/NRA-Master-Logo-Repro-400px.png)
-
 > ⚠️ **INTERNAL USE ONLY** - This tool is exclusively for the Not Real Art content team and requires Artwork Archive URLs from our curated artist database.
 
 ## 🎯 About Not Real Art
